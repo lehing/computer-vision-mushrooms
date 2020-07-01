@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mushrooms Detector</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-lg">
+    <h2>Mushrooms Detector</h2>
+    <form method="post" modelAttribute="sampleDetails" enctype="multipart/form-data">
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <input type="file" name="mushroomPicture" class="form-control" id="pictureToUpload" required="true"/>
+                </div>
+                <div class="col">
+                    <button type="submit" name="checkMushroom" id="submitButton" class="btn btn-primary">Check</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Mushrooms Detector</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+<div class="container-lg">
+    <h2>Mushrooms Detector Results</h2>
+    <div class="row">
+        <figure class="figure">
+            <img class="rounded" id="searchedMushroom" th:src="@{'data:image/jpeg;base64,'+${picture}}">
+            <figcaption th:text="${name}" class="figure-caption">A caption for the above image.</figcaption>
+        </figure>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Mushroom Type</th>
+                <th scope="col">Probability</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="prediction : ${predictions}">
+                <td scope="row" th:text="${prediction.tagName}">Name ...</td>
+                <td th:text="${prediction.probability} + '%'">Probability ...</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
