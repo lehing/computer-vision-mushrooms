@@ -1,4 +1,4 @@
-package com.computervision.mushrooms.service.azure.model;
+package com.computervision.mushrooms.service.computervision.azure.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AccessLevel;
@@ -14,4 +14,5 @@ public class CVAzurePrediction {
     private Double probability;
     private String tagId;
     private String tagName;
+    private String wikiUrl;
 }

@@ -1,4 +1,4 @@
-package com.computervision.mushrooms.service.azure.model;
+package com.computervision.mushrooms.service.computervision.azure.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

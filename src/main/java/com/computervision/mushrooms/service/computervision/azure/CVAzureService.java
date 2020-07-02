@@ -1,8 +1,8 @@
-package com.computervision.mushrooms.service.azure;
+package com.computervision.mushrooms.service.computervision.azure;
 
-import com.computervision.mushrooms.service.ComputerVisionService;
-import com.computervision.mushrooms.service.azure.model.CVAzurePrediction;
-import com.computervision.mushrooms.service.azure.model.CVAzureResult;
+import com.computervision.mushrooms.service.computervision.ComputerVisionService;
+import com.computervision.mushrooms.service.computervision.azure.model.CVAzurePrediction;
+import com.computervision.mushrooms.service.computervision.azure.model.CVAzureResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
@@ -27,7 +26,7 @@ public class CVAzureService implements ComputerVisionService {
     private final RestTemplate restTemplate;
 
     @Override
-    public ModelAndView uploadPicture(MultipartFile multipartFile) throws IOException {
+    public CVAzureResult uploadPicture(final MultipartFile multipartFile) throws IOException {
         String url = String.format("%s%s", properties.getHost(), properties.getPath());
 
         HttpHeaders headers = new HttpHeaders();
@@ -38,20 +37,7 @@ public class CVAzureService implements ComputerVisionService {
 
         CVAzureResult result = restTemplate.postForObject(url, request, CVAzureResult.class);
 
-        ModelAndView mav = new ModelAndView("result");
-        List<CVAzurePrediction> predictionList = Arrays.asList(result.getPredictions()).stream()
-                .map(pre -> {
-                    CVAzurePrediction prediction = new CVAzurePrediction();
-                    prediction.setProbability(Math.round(pre.getProbability()*10000)/100.00);
-                    prediction.setTagName(pre.getTagName());
-                    return prediction;
-                })
-                .collect(Collectors.toList());
-        mav.addObject("predictions", predictionList);
-        mav.addObject("name", multipartFile.getOriginalFilename());
-        mav.addObject("picture", Base64.getEncoder().encodeToString(bytes));
-
-        return mav;
+        return result;
     }
 
 }

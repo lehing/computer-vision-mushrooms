@@ -22,12 +22,14 @@
             <tr>
                 <th scope="col">Mushroom Type</th>
                 <th scope="col">Probability</th>
+                <th scope="col">Wikipedia URL</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="prediction : ${predictions}">
                 <td scope="row" th:text="${prediction.tagName}">Name ...</td>
                 <td th:text="${prediction.probability} + '%'">Probability ...</td>
+                <td><a th:href="${prediction.wikiUrl}" th:text="${prediction.wikiUrl}">Wikipedia</a></td>
             </tr>
             </tbody>
         </table>
