@@ -10,11 +10,18 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" media="screen" th:href="@{style.css}"/>
+
+    <style>
+        body {
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: 100% 100%;
+        }
+    </style>
 </head>
 <body>
 <div class="container-lg mw-100 h-100 align-center">
     <div class="align-items-center h-100 align-center">
-        <div class="col-5 mx-auto h-100 align-center" style="top:50%;">
+        <div class="col-5 mx-auto h-100 align-center" style="top:30%; right:20%;">
             <h1 style="font-size: 50px;">MUSHROOMS DETECTOR</h1>
             <form method="post" modelAttribute="sampleDetails" enctype="multipart/form-data">
                 <div class="form-group">
